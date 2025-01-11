@@ -358,7 +358,8 @@ RUN if [ $INSTALL_GHOSTSCRIPT = true ]; then \
 # Install Redis package:
 ARG INSTALL_REDIS=false
 RUN if [ ${INSTALL_REDIS} = true ]; then \
-  # Install Redis Extension
+  # Install Redis Extension \
+  pecl update-channels; \
   if [ $(php -r "echo PHP_MAJOR_VERSION;") = "5" ]; then \
   printf "\n" | pecl install -o -f redis-4.3.0; \
   else \

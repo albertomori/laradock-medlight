@@ -168,7 +168,8 @@ RUN set -eux; \
 # Install PhpRedis package:
 ARG INSTALL_PHPREDIS=false
 RUN if [ ${INSTALL_PHPREDIS} = true ]; then \
-    # Install Php Redis Extension
+    # Install Php Redis Extension \
+    pecl update-channels; \
     if [ $(php -r "echo PHP_MAJOR_VERSION;") = "5" ]; then \
       printf "\n" | pecl install -o -f redis-4.3.0; \
     else \
